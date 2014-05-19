@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Department_Report" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="05463056-a27f-439d-a421-b3bd85168d02">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Foodmart5.6 "/>
+	<queryString>
+		<![CDATA[select * from department]]>
+	</queryString>
+	<field name="department_id" class="java.lang.Integer"/>
+	<field name="department_description" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="120" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<image>
+				<reportElement x="0" y="0" width="147" height="107" uuid="7cab8729-0265-424f-a551-75f25f7c6239">
+					<property name="local_mesure_unitwidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="local_mesure_unitheight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="local_mesure_unity" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["C:/Documents and Settings/Administrator/JaspersoftWorkspace/AcademyLabs/Tomcat_Logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement key="" x="220" y="35" width="320" height="45" uuid="2870de83-c1d5-4c73-8962-45df33218c9e"/>
+				<textElement>
+					<font size="20" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Department Summary]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="0" y="0" width="278" height="20" uuid="cf075423-6cb6-4508-9ca5-c84ba25a7849"/>
+				<text><![CDATA[Department ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="0" width="277" height="20" uuid="bc3c5ae6-ba99-4146-86e5-247f1f208723"/>
+				<text><![CDATA[Department Name]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="50" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="0" y="26" width="278" height="20" uuid="d676b8e5-c05e-467c-8f4e-511a720092ce"/>
+				<textFieldExpression><![CDATA[$F{department_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="278" y="26" width="277" height="20" uuid="9fed4503-abc7-4fe6-ae33-b96ce711687b"/>
+				<textFieldExpression><![CDATA[$F{department_description}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</pageFooter>
+</jasperReport>
