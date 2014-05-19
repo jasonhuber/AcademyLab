@@ -2,8 +2,11 @@
 <!-- Created with Jaspersoft Studio version last-->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="employee_report" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="198b701e-42eb-45a1-9017-3625b99c914e">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Foodmart5.6 "/>
+	<parameter name="DEPT_ID" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
 	<queryString language="SQL">
-		<![CDATA[SELECT * FROM employee ORDER BY department_id, position_id]]>
+		<![CDATA[SELECT * FROM employee where department_id = $P{DEPT_ID} ORDER BY department_id, position_id ]]>
 	</queryString>
 	<field name="employee_id" class="java.lang.Integer"/>
 	<field name="full_name" class="java.lang.String"/>
