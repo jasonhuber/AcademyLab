@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version last-->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="salary_report" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="370bead0-1859-47a1-93e7-0e1908249421">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Foodmart5.6 "/>
+	<queryString language="SQL">
+		<![CDATA[SELECT  public.department.department_description,  public.employee.position_title, public.employee.salary, public.employee.gender 
+FROM  public.department INNER JOIN  public.employee ON  public.department.department_id =  public.employee.department_id]]>
+	</queryString>
+	<field name="department_description" class="java.lang.String"/>
+	<field name="position_title" class="java.lang.String"/>
+	<field name="salary" class="java.math.BigDecimal"/>
+	<field name="gender" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="28" width="555" height="30" uuid="3b1fa0e6-bdf3-478c-be97-5f7a6c581324"/>
+				<textElement textAlignment="Center">
+					<font size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Department Position Salary Gender Report"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="141" height="30" uuid="0b923d87-f55c-462b-b113-12d2ae7e01a2"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Department Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="2" width="138" height="30" uuid="6f24c0a5-1093-4f08-8021-19583e88d0ef"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Position ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="2" width="138" height="30" uuid="26b7321f-3830-4616-b3fe-26cfdec8954b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Salary]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="2" width="138" height="30" uuid="a814d0cd-8869-44c2-b2c5-cebceb151849"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gender]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="141" height="30" uuid="228fbfe1-831c-487d-baf2-ac83f10ed599"/>
+				<textFieldExpression><![CDATA[$F{department_description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="0" width="138" height="30" uuid="26c93121-31f3-4499-a52b-6ee5d668cab5"/>
+				<textFieldExpression><![CDATA[$F{position_title}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤#,##0.###;¤(#,##0.###-)">
+				<reportElement x="279" y="0" width="138" height="30" uuid="f6473cf2-49d9-4ced-ae99-0ac50c918383"/>
+				<textFieldExpression><![CDATA[$F{salary}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="0" width="138" height="30" uuid="d3b401e9-3a2d-4ec8-92a9-a92b2c3cded7"/>
+				<textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="800" splitType="Stretch">
+			<property name="local_mesure_unitheight" value="pixel"/>
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<componentElement>
+				<reportElement x="0" y="0" width="555" height="800" uuid="82d94990-a650-4e2b-96f7-e2af5ce6b95e"/>
+				<hc:chart xmlns:hc="http://jaspersoft.com/highcharts" xsi:schemaLocation="http://jaspersoft.com/highcharts http://jaspersoft.com/schema/highcharts.xsd" type="Bar">
+					<hc:chartSetting name="default">
+						<hc:chartProperty name="chart.zoomType">
+							<hc:propertyExpression><![CDATA["xy"]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="credits.enabled">
+							<hc:propertyExpression><![CDATA[false]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="credits.href">
+							<hc:propertyExpression><![CDATA[""]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="credits.text">
+							<hc:propertyExpression><![CDATA[""]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="title.text">
+							<hc:propertyExpression><![CDATA["Department Salary Report"]]></hc:propertyExpression>
+						</hc:chartProperty>
+						<hc:chartProperty name="yAxis.title.text">
+							<hc:propertyExpression><![CDATA[""]]></hc:propertyExpression>
+						</hc:chartProperty>
+					</hc:chartSetting>
+					<multiAxisData>
+						<multiAxisDataset/>
+						<dataAxis axis="Rows">
+							<axisLevel name="Department">
+								<labelExpression><![CDATA["Level Label expression"]]></labelExpression>
+								<axisLevelBucket class="java.lang.String">
+									<bucketExpression><![CDATA[$F{department_description}]]></bucketExpression>
+								</axisLevelBucket>
+							</axisLevel>
+						</dataAxis>
+						<dataAxis axis="Columns">
+							<axisLevel name="Gender">
+								<labelExpression><![CDATA[]]></labelExpression>
+								<axisLevelBucket class="java.lang.String">
+									<bucketExpression><![CDATA[$F{gender}]]></bucketExpression>
+								</axisLevelBucket>
+							</axisLevel>
+						</dataAxis>
+						<multiAxisMeasure name="Salary" class="java.math.BigDecimal" calculation="Average">
+							<labelExpression><![CDATA["Average Salary"]]></labelExpression>
+							<valueExpression><![CDATA[$F{salary}]]></valueExpression>
+						</multiAxisMeasure>
+					</multiAxisData>
+					<hc:series name="Salary"/>
+				</hc:chart>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>

@@ -132,130 +132,60 @@ ORDER BY Average
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="57" width="72" height="30" uuid="49ef3ec5-23ee-4620-b865-407f159a240d"/>
+				<reportElement x="0" y="0" width="72" height="30" uuid="49ef3ec5-23ee-4620-b865-407f159a240d"/>
 				<textFieldExpression><![CDATA[$F{employee_id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="72" y="57" width="69" height="30" uuid="6b4dafb7-7b4e-4a5a-b5ca-b739232d0eba"/>
+				<reportElement x="72" y="0" width="69" height="30" uuid="6b4dafb7-7b4e-4a5a-b5ca-b739232d0eba"/>
 				<textFieldExpression><![CDATA[$F{first_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="141" y="57" width="69" height="30" uuid="00269769-9a24-4265-b36a-22eb1089e291"/>
+				<reportElement x="141" y="0" width="69" height="30" uuid="00269769-9a24-4265-b36a-22eb1089e291"/>
 				<textFieldExpression><![CDATA[$F{last_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="210" y="57" width="69" height="30" uuid="9453b028-86f9-458d-ae6b-f3437e4be407"/>
+				<reportElement x="210" y="0" width="69" height="30" uuid="9453b028-86f9-458d-ae6b-f3437e4be407"/>
 				<textFieldExpression><![CDATA[$F{position_title}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="279" y="57" width="69" height="30" uuid="dba100ff-9e70-4124-97cb-1eb0ee422893"/>
+				<reportElement x="279" y="0" width="69" height="30" uuid="dba100ff-9e70-4124-97cb-1eb0ee422893"/>
 				<textFieldExpression><![CDATA[$F{department_id}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="348" y="57" width="69" height="30" uuid="4081eced-757d-429d-babe-1b132d8066b1"/>
+				<reportElement x="348" y="0" width="69" height="30" uuid="4081eced-757d-429d-babe-1b132d8066b1"/>
 				<textFieldExpression><![CDATA[$F{hire_date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="417" y="57" width="69" height="30" uuid="d2c946bf-a4dc-465d-9604-3695a27987e3"/>
+				<reportElement x="417" y="0" width="69" height="30" uuid="d2c946bf-a4dc-465d-9604-3695a27987e3"/>
 				<textFieldExpression><![CDATA[$F{salary}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="486" y="57" width="69" height="30" uuid="fcebf719-000b-4f57-8b21-bbce1dba34f4"/>
+				<reportElement x="486" y="0" width="69" height="30" uuid="fcebf719-000b-4f57-8b21-bbce1dba34f4"/>
 				<textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
 	<summary>
 		<band height="278" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.HorizontalRowLayout"/>
 			<textField>
-				<reportElement key="" x="0" y="0" width="170" height="42" uuid="b36051f5-41a6-4076-91ab-f6b2c35bd2b5"/>
+				<reportElement key="" x="0" y="0" width="141" height="278" uuid="b36051f5-41a6-4076-91ab-f6b2c35bd2b5"/>
 				<textFieldExpression><![CDATA["Total Number of Employees: " + $V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="385" y="0" width="170" height="42" uuid="48c62cda-c530-4d0b-81f0-37506050417f"/>
+				<reportElement x="141" y="0" width="138" height="278" uuid="48c62cda-c530-4d0b-81f0-37506050417f"/>
 				<textFieldExpression><![CDATA["Total Salary: " + $V{salary1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="385" y="40" width="170" height="20" uuid="1ef92386-b488-457f-aa74-bbb1d696a909"/>
+				<reportElement x="279" y="0" width="138" height="278" uuid="1ef92386-b488-457f-aa74-bbb1d696a909"/>
 				<textFieldExpression><![CDATA["Total Number of Females " + $V{femaleCount}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="42" width="170" height="20" uuid="66a0b72c-5b5a-44d5-adfc-31dd559ccdc6"/>
+				<reportElement x="417" y="0" width="138" height="278" uuid="66a0b72c-5b5a-44d5-adfc-31dd559ccdc6"/>
 				<textFieldExpression><![CDATA["Total Number of Males: " + $V{maleCount}]]></textFieldExpression>
 			</textField>
-			<componentElement>
-				<reportElement x="177" y="0" width="200" height="200" uuid="8d583f86-e653-4ddf-940d-01ae1c63d91a"/>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Position_Gender_Salary" uuid="b29c434e-1ac1-4966-8171-5225a885b10d">
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-					</datasetRun>
-					<jr:column width="50" uuid="2ee7ffae-7acd-4a3a-82e8-956d52463e65">
-						<jr:tableHeader style="Table_TH" height="43">
-							<staticText>
-								<reportElement x="0" y="11" width="50" height="20" uuid="68e30fcf-0d0e-41fa-92aa-31e899683652"/>
-								<text><![CDATA[TITLE]]></text>
-							</staticText>
-						</jr:tableHeader>
-						<jr:tableFooter style="Table_TH" height="30"/>
-						<jr:detailCell style="Table_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="50" height="30" uuid="f890b047-72f4-4429-b7b2-011af405bb0d"/>
-								<textFieldExpression><![CDATA[$F{position_title}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="50" uuid="4fc7d2f1-0fba-46df-b909-f213efc77764">
-						<jr:tableHeader style="Table_TH" height="43">
-							<staticText>
-								<reportElement x="0" y="12" width="50" height="20" uuid="90f874a2-19e3-4de0-9200-8d3f07b065a0"/>
-								<text><![CDATA[GENDER]]></text>
-							</staticText>
-						</jr:tableHeader>
-						<jr:tableFooter style="Table_TH" height="30"/>
-						<jr:detailCell style="Table_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="50" height="30" uuid="6a43b607-b232-494b-a542-7216873c3242"/>
-								<textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="136" uuid="e760d339-f0db-4b9e-84e4-aaad962800b8">
-						<jr:tableHeader style="Table_TH" height="43">
-							<staticText>
-								<reportElement x="0" y="16" width="136" height="20" uuid="9a747978-9e2e-414e-9bf2-cd5599a6c211"/>
-								<text><![CDATA[COUNT]]></text>
-							</staticText>
-						</jr:tableHeader>
-						<jr:tableFooter style="Table_TH" height="30"/>
-						<jr:detailCell style="Table_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="50" height="30" uuid="dc518759-ec8b-4df6-a0e3-406b8c5f4a61"/>
-								<textFieldExpression><![CDATA[$F{count}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="50" uuid="facea230-01eb-467b-83df-1e732b81dd03">
-						<jr:tableHeader style="Table_TH" height="43">
-							<staticText>
-								<reportElement x="0" y="23" width="50" height="20" uuid="3cf0db48-831d-4b28-b557-4f1bb2215cda"/>
-								<text><![CDATA[AVG SALARY]]></text>
-							</staticText>
-						</jr:tableHeader>
-						<jr:tableFooter style="Table_TH" height="30"/>
-						<jr:detailCell style="Table_TD" height="30">
-							<textField pattern="">
-								<reportElement x="0" y="0" width="50" height="30" uuid="fe811124-99b3-4575-976a-5e1408418485"/>
-								<textFieldExpression><![CDATA[$F{average}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-				</jr:table>
-			</componentElement>
 		</band>
 	</summary>
 </jasperReport>
