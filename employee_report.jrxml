@@ -2,6 +2,33 @@
 <!-- Created with Jaspersoft Studio version last-->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="employee_report" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="198b701e-42eb-45a1-9017-3625b99c914e">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Foodmart5.6 "/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
 	<subDataset name="Position_Gender_Salary" uuid="a21222c6-c21e-402f-a8d9-7b2155733295">
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Foodmart5.6 "/>
 		<queryString language="SQL">
@@ -144,7 +171,7 @@ ORDER BY Average
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<summary>
-		<band height="122" splitType="Stretch">
+		<band height="278" splitType="Stretch">
 			<textField>
 				<reportElement key="" x="0" y="0" width="170" height="42" uuid="b36051f5-41a6-4076-91ab-f6b2c35bd2b5"/>
 				<textFieldExpression><![CDATA["Total Number of Employees: " + $V{REPORT_COUNT}]]></textFieldExpression>
@@ -161,6 +188,74 @@ ORDER BY Average
 				<reportElement x="0" y="42" width="170" height="20" uuid="66a0b72c-5b5a-44d5-adfc-31dd559ccdc6"/>
 				<textFieldExpression><![CDATA["Total Number of Males: " + $V{maleCount}]]></textFieldExpression>
 			</textField>
+			<componentElement>
+				<reportElement x="177" y="0" width="200" height="200" uuid="8d583f86-e653-4ddf-940d-01ae1c63d91a"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Position_Gender_Salary" uuid="b29c434e-1ac1-4966-8171-5225a885b10d">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="50" uuid="2ee7ffae-7acd-4a3a-82e8-956d52463e65">
+						<jr:tableHeader style="Table_TH" height="43">
+							<staticText>
+								<reportElement x="0" y="11" width="50" height="20" uuid="68e30fcf-0d0e-41fa-92aa-31e899683652"/>
+								<text><![CDATA[TITLE]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="50" height="30" uuid="f890b047-72f4-4429-b7b2-011af405bb0d"/>
+								<textFieldExpression><![CDATA[$F{position_title}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="50" uuid="4fc7d2f1-0fba-46df-b909-f213efc77764">
+						<jr:tableHeader style="Table_TH" height="43">
+							<staticText>
+								<reportElement x="0" y="12" width="50" height="20" uuid="90f874a2-19e3-4de0-9200-8d3f07b065a0"/>
+								<text><![CDATA[GENDER]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="50" height="30" uuid="6a43b607-b232-494b-a542-7216873c3242"/>
+								<textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="136" uuid="e760d339-f0db-4b9e-84e4-aaad962800b8">
+						<jr:tableHeader style="Table_TH" height="43">
+							<staticText>
+								<reportElement x="0" y="16" width="136" height="20" uuid="9a747978-9e2e-414e-9bf2-cd5599a6c211"/>
+								<text><![CDATA[COUNT]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="50" height="30" uuid="dc518759-ec8b-4df6-a0e3-406b8c5f4a61"/>
+								<textFieldExpression><![CDATA[$F{count}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="50" uuid="facea230-01eb-467b-83df-1e732b81dd03">
+						<jr:tableHeader style="Table_TH" height="43">
+							<staticText>
+								<reportElement x="0" y="23" width="50" height="20" uuid="3cf0db48-831d-4b28-b557-4f1bb2215cda"/>
+								<text><![CDATA[AVG SALARY]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField pattern="">
+								<reportElement x="0" y="0" width="50" height="30" uuid="fe811124-99b3-4575-976a-5e1408418485"/>
+								<textFieldExpression><![CDATA[$F{average}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
 		</band>
 	</summary>
 </jasperReport>
