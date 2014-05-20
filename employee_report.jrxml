@@ -2,11 +2,26 @@
 <!-- Created with Jaspersoft Studio version last-->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="employee_report" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="198b701e-42eb-45a1-9017-3625b99c914e">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Foodmart5.6 "/>
+	<subDataset name="Position_Gender_Salary" uuid="a21222c6-c21e-402f-a8d9-7b2155733295">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Foodmart5.6 "/>
+		<queryString language="SQL">
+			<![CDATA[SELECT position_title, gender, COUNT(*), 
+AVG(salary) AS Average 
+FROM employee 
+GROUP BY position_title, gender 
+ORDER BY Average
+]]>
+		</queryString>
+		<field name="position_title" class="java.lang.String"/>
+		<field name="gender" class="java.lang.String"/>
+		<field name="count" class="java.lang.Long"/>
+		<field name="average" class="java.math.BigDecimal"/>
+	</subDataset>
 	<parameter name="DEPT_ID" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
 	</parameter>
 	<queryString language="SQL">
-		<![CDATA[SELECT * FROM employee where department_id = $P{DEPT_ID} ORDER BY department_id, position_id ]]>
+		<![CDATA[SELECT * FROM employee where department_id = $P{DEPT_ID} ORDER BY department_id, position_id]]>
 	</queryString>
 	<field name="employee_id" class="java.lang.Integer"/>
 	<field name="full_name" class="java.lang.String"/>
@@ -25,6 +40,15 @@
 	<field name="marital_status" class="java.lang.String"/>
 	<field name="gender" class="java.lang.String"/>
 	<field name="management_role" class="java.lang.String"/>
+	<variable name="salary1" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{salary}]]></variableExpression>
+	</variable>
+	<variable name="maleCount" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[IF($F{gender}.equals( "M" ),1,0)]]></variableExpression>
+	</variable>
+	<variable name="femaleCount" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[IF($F{gender}.equals( "F" ),1,0)]]></variableExpression>
+	</variable>
 	<group name="Dept_ID_Group" isStartNewPage="true">
 		<groupExpression><![CDATA[$F{department_id}]]></groupExpression>
 		<groupHeader>
@@ -120,6 +144,23 @@
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="122" splitType="Stretch">
+			<textField>
+				<reportElement key="" x="0" y="0" width="170" height="42" uuid="b36051f5-41a6-4076-91ab-f6b2c35bd2b5"/>
+				<textFieldExpression><![CDATA["Total Number of Employees: " + $V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="385" y="0" width="170" height="42" uuid="48c62cda-c530-4d0b-81f0-37506050417f"/>
+				<textFieldExpression><![CDATA["Total Salary: " + $V{salary1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="385" y="40" width="170" height="20" uuid="1ef92386-b488-457f-aa74-bbb1d696a909"/>
+				<textFieldExpression><![CDATA["Total Number of Females " + $V{femaleCount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="42" width="170" height="20" uuid="66a0b72c-5b5a-44d5-adfc-31dd559ccdc6"/>
+				<textFieldExpression><![CDATA["Total Number of Males: " + $V{maleCount}]]></textFieldExpression>
+			</textField>
+		</band>
 	</summary>
 </jasperReport>
